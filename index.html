@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="booting">
   <div class="app-shell">
     <aside class="sidebar">
       <a class="brand" href="#" aria-label="RE:START 首页">
@@ -25,13 +25,13 @@
         <p class="nav-label">回顾</p>
         <a class="nav-item" href="#mistakes" data-action="mistakes"><span class="icon">◎</span>错题本 <b class="badge" id="mistakeBadge">0</b></a>
         <a class="nav-item" href="#progress"><span class="icon">▥</span>学习进度</a>
-        <a class="nav-item" href="#terms"><span class="icon">⌘</span>术语词典</a>
+        <a class="nav-item" href="#terms" data-action="terms"><span class="icon">⌘</span>术语词典</a>
       </nav>
 
       <div class="sidebar-bottom">
         <div class="safety"><span>✓</span><div><strong>安全实验模式</strong><small>仅运行经过验证的内置样本</small></div></div>
-        <a class="nav-item" href="#settings"><span class="icon">⚙</span>设置</a>
-        <div class="user"><div class="avatar">林</div><div><strong>林同学</strong><small>初学者 · 第 3 天</small></div><button class="has-help" aria-label="打开账号菜单" data-help="打开账号与退出登录选项">•••</button></div>
+        <a class="nav-item" href="#settings" data-action="settings"><span class="icon">⚙</span>设置</a>
+        <div class="user"><div class="avatar" id="avatar">?</div><div><strong id="profileName">尚未创建档案</strong><small id="profileMeta">本机离线档案</small></div><button class="has-help" id="profileMenu" aria-label="管理学习档案" data-help="新增、切换或管理本机学习档案">•••</button></div>
       </div>
     </aside>
 
@@ -43,52 +43,49 @@
 
       <div class="content">
         <section class="welcome">
-          <div><p class="eyebrow">WELCOME BACK, LIN</p><h1>继续探索程序的内部世界。</h1><p>每次理解一条指令，都离真相更近一步。</p></div>
-          <div class="streak"><span>连续学习</span><strong>3 <small>天</small></strong><div class="week" aria-label="本周学习记录"><i class="done">一</i><i class="done">二</i><i class="done">三</i><i>四</i><i>五</i><i>六</i><i>日</i></div></div>
+          <div><p class="eyebrow" id="welcomeEyebrow">LEARNING PROFILE</p><h1 id="welcomeTitle">从程序是什么开始。</h1><p id="welcomeSubtitle">创建本机学习档案后开始课程。</p></div>
+          <div class="streak"><span>连续学习</span><strong><span id="streakCount">0</span> <small>天</small></strong><div class="week" id="weekDays" aria-label="本周学习记录"></div></div>
         </section>
 
         <section class="continue-card" id="lesson">
           <div class="card-main">
-            <div class="section-heading"><span class="pulse"></span>继续学习 <em>预计 8 分钟</em></div>
-            <div class="lesson-number">LESSON 04</div>
-            <h2>加减运算与标志位</h2>
-            <p>观察 <code>add</code> 指令如何改变寄存器，并理解零标志位 <code>ZF</code> 的作用。</p>
-            <div class="lesson-meta"><span>模块 01 · CPU 与汇编基础</span><span>•</span><span>上次停在：预测题</span></div>
-            <button class="primary has-help" id="continueBtn" aria-label="继续上次未完成的课程" data-help="从上次停下的预测题继续学习">继续学习 <span>→</span></button>
+            <div class="section-heading"><span class="pulse"></span>学习课程 <em>预计 22 分钟</em></div>
+            <div class="lesson-number">LESSON 00</div>
+            <h2>程序里面有什么</h2>
+            <p>从程序、源代码、编译器和可执行文件开始建立第一张知识地图。</p>
+            <div class="lesson-meta"><span>入门阶段</span><span>•</span><span id="currentPosition">尚未开始</span></div>
+            <button class="primary has-help" id="continueBtn" aria-label="开始或继续当前课程" data-help="从档案中保存的位置开始学习">开始学习 <span>→</span></button>
           </div>
           <div class="code-visual" aria-label="汇编代码预览">
-            <div class="window-bar"><i></i><i></i><i></i><span>assembly_preview.asm</span></div>
-            <pre><span class="line"><b>01</b> mov  rax, <em>05h</em></span>
-<span class="line active"><b>02</b> add  rax, <em>03h</em><u>← NEXT</u></span>
-<span class="line"><b>03</b> cmp  rax, <em>08h</em></span>
-<span class="line"><b>04</b> je   <strong>equal</strong></span></pre>
-            <div class="register"><span>RAX</span><strong>0000 0000 0000 0005</strong></div>
-            <div class="flags"><span>FLAGS</span><b>ZF <i>0</i></b><b>CF <i>0</i></b><b>SF <i>0</i></b></div>
+            <div class="window-bar"><i></i><i></i><i></i><span>learning_path.txt</span></div>
+            <pre><span class="line"><b>01</b> 人编写 <em>源代码</em></span>
+<span class="line active"><b>02</b> 编译器进行翻译<u>← START</u></span>
+<span class="line"><b>03</b> 生成 <em>可执行文件</em></span>
+<span class="line"><b>04</b> 观察程序<strong>行为</strong></span></pre>
+            <div class="register"><span>STAGE</span><strong>零基础入门</strong></div>
+            <div class="flags"><span>COURSE</span><b>程序 <i>→</i></b><b>二进制 <i>→</i></b><b>内存</b></div>
           </div>
         </section>
 
         <div class="grid">
           <section class="panel progress-panel" id="progress">
             <div class="panel-title"><div><span>总体进度</span><small>3 个学习模块</small></div><a href="#map" data-action="courses">查看学习地图 →</a></div>
-            <div class="progress-overview"><div class="ring" id="progressRing"><span><strong id="progressPercent">0</strong><small>%</small></span></div><div><strong id="progressCount">0 / 11</strong><span>已完成课程</span><small id="studyMinutes">本周学习 0 分钟</small></div></div>
+            <div class="progress-overview"><div class="ring" id="progressRing"><span><strong id="progressPercent">0</strong><small>%</small></span></div><div><strong id="progressCount">0 / 3</strong><span>已完成课程</span><small id="studyMinutes">还没有学习记录</small></div></div>
             <div class="modules" id="moduleProgress">
-              <div class="module-row"><div class="module-index complete">✓</div><div><strong>00 · 计算机基础</strong><div class="bar"><i style="width:100%"></i></div></div><span>3 / 3</span></div>
-              <div class="module-row"><div class="module-index current">01</div><div><strong>CPU 与汇编基础</strong><div class="bar"><i style="width:17%"></i></div></div><span>1 / 6</span></div>
-              <div class="module-row muted"><div class="module-index">02</div><div><strong>函数与调用</strong><div class="bar"><i></i></div></div><span>0 / 2</span></div>
+              <div class="module-row muted"><div class="module-index current">00</div><div><strong>00 · 零基础入门</strong><div class="bar"><i></i></div></div><span>0 / 3</span></div>
             </div>
           </section>
 
           <section class="panel weak-panel" id="mistakes">
             <div class="panel-title"><div><span>需要巩固</span><small>根据最近练习生成</small></div><button class="has-help" aria-label="打开薄弱知识点菜单" data-help="查看全部薄弱知识点与复习设置">•••</button></div>
-            <div class="weak-item"><div class="weak-icon">ZF</div><div><strong>标志位判断</strong><span>最近正确率 50%</span></div><span class="tag danger">需复习</span></div>
-            <div class="weak-item"><div class="weak-icon purple">0x</div><div><strong>十六进制换算</strong><span>最近正确率 75%</span></div><span class="tag">待巩固</span></div>
+            <div id="mistakePreview"><div class="empty-state">还没有错题。完成理解检查后，这里会显示真实记录。</div></div>
             <button class="secondary has-help" aria-label="开始五分钟薄弱点复习" data-help="根据近期错题生成一组五分钟练习">开始 5 分钟复习 <span>→</span></button>
           </section>
         </div>
 
         <section class="daily">
-          <div><span class="daily-icon">⌁</span><div><strong>今日小挑战</strong><p>如果 <code>RAX = 0xFF</code>，执行 <code>add rax, 1</code> 后结果是多少？</p></div></div>
-          <button class="has-help" id="challengeBtn" aria-label="开始今日十六进制挑战" data-help="回答一道十六进制加法挑战题">接受挑战 <span>→</span></button>
+          <div><span class="daily-icon">⌁</span><div><strong>学习地图</strong><p>按顺序完成教学、互动、自己的总结和理解检查，下一课才会解锁。</p></div></div>
+          <button class="has-help" id="challengeBtn" aria-label="打开学习地图" data-help="查看真实课程进度与解锁条件">查看课程 <span>→</span></button>
         </section>
       </div>
     </main>
@@ -99,7 +96,7 @@
       <div id="dialogBody"></div>
     </section>
   </div>
-  <div class="toast" id="toast" role="status" aria-live="polite">课程已准备好，正在进入预测题…</div>
+  <div class="toast" id="toast" role="status" aria-live="polite">学习记录已更新。</div>
   <script src="course-data.js"></script>
   <script src="storage.js"></script>
   <script src="simulator.js"></script>
