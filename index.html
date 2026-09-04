@@ -20,10 +20,10 @@
       <nav aria-label="主要导航">
         <p class="nav-label">学习</p>
         <a class="nav-item active" href="#"><span class="icon">⌂</span>学习首页</a>
-        <a class="nav-item" href="#map"><span class="icon">◇</span>学习地图</a>
-        <a class="nav-item" href="#lesson"><span class="icon">▤</span>课程中心</a>
+        <a class="nav-item" href="#map" data-action="courses"><span class="icon">◇</span>学习地图</a>
+        <a class="nav-item" href="#lesson" data-action="courses"><span class="icon">▤</span>课程中心</a>
         <p class="nav-label">回顾</p>
-        <a class="nav-item" href="#mistakes"><span class="icon">◎</span>错题本 <b class="badge">4</b></a>
+        <a class="nav-item" href="#mistakes" data-action="mistakes"><span class="icon">◎</span>错题本 <b class="badge" id="mistakeBadge">0</b></a>
         <a class="nav-item" href="#progress"><span class="icon">▥</span>学习进度</a>
         <a class="nav-item" href="#terms"><span class="icon">⌘</span>术语词典</a>
       </nav>
@@ -69,9 +69,9 @@
 
         <div class="grid">
           <section class="panel progress-panel" id="progress">
-            <div class="panel-title"><div><span>总体进度</span><small>3 个学习模块</small></div><a href="#map">查看学习地图 →</a></div>
-            <div class="progress-overview"><div class="ring"><span><strong>27</strong><small>%</small></span></div><div><strong>3 / 11</strong><span>已完成课程</span><small>本周学习 42 分钟</small></div></div>
-            <div class="modules">
+            <div class="panel-title"><div><span>总体进度</span><small>3 个学习模块</small></div><a href="#map" data-action="courses">查看学习地图 →</a></div>
+            <div class="progress-overview"><div class="ring" id="progressRing"><span><strong id="progressPercent">0</strong><small>%</small></span></div><div><strong id="progressCount">0 / 11</strong><span>已完成课程</span><small id="studyMinutes">本周学习 0 分钟</small></div></div>
+            <div class="modules" id="moduleProgress">
               <div class="module-row"><div class="module-index complete">✓</div><div><strong>00 · 计算机基础</strong><div class="bar"><i style="width:100%"></i></div></div><span>3 / 3</span></div>
               <div class="module-row"><div class="module-index current">01</div><div><strong>CPU 与汇编基础</strong><div class="bar"><i style="width:17%"></i></div></div><span>1 / 6</span></div>
               <div class="module-row muted"><div class="module-index">02</div><div><strong>函数与调用</strong><div class="bar"><i></i></div></div><span>0 / 2</span></div>
@@ -93,7 +93,16 @@
       </div>
     </main>
   </div>
-  <div class="toast" id="toast" role="status">课程已准备好，正在进入预测题…</div>
+  <div class="dialog-backdrop" id="dialogBackdrop" hidden>
+    <section class="learning-dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+      <header><div><small id="dialogEyebrow">课程中心</small><h2 id="dialogTitle">选择课程</h2></div><button id="closeDialog" aria-label="关闭">×</button></header>
+      <div id="dialogBody"></div>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite">课程已准备好，正在进入预测题…</div>
+  <script src="course-data.js"></script>
+  <script src="storage.js"></script>
+  <script src="simulator.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
