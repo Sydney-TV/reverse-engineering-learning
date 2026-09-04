@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RE:START · 逆向工程学习助手</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="RE:START 首页">
+        <span class="brand-mark">R<span>E</span></span>
+        <span><strong>RE:START</strong><small>逆向工程学习助手</small></span>
+      </a>
+
+      <nav aria-label="主要导航">
+        <p class="nav-label">学习</p>
+        <a class="nav-item active" href="#"><span class="icon">⌂</span>学习首页</a>
+        <a class="nav-item" href="#map"><span class="icon">◇</span>学习地图</a>
+        <a class="nav-item" href="#lesson"><span class="icon">▤</span>课程中心</a>
+        <p class="nav-label">回顾</p>
+        <a class="nav-item" href="#mistakes"><span class="icon">◎</span>错题本 <b class="badge">4</b></a>
+        <a class="nav-item" href="#progress"><span class="icon">▥</span>学习进度</a>
+        <a class="nav-item" href="#terms"><span class="icon">⌘</span>术语词典</a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="safety"><span>✓</span><div><strong>安全实验模式</strong><small>仅运行经过验证的内置样本</small></div></div>
+        <a class="nav-item" href="#settings"><span class="icon">⚙</span>设置</a>
+        <div class="user"><div class="avatar">林</div><div><strong>林同学</strong><small>初学者 · 第 3 天</small></div><button aria-label="更多">•••</button></div>
+      </div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <div class="breadcrumb"><span>学习首页</span><b>/</b><span>概览</span></div>
+        <div class="top-actions"><button class="icon-button" aria-label="搜索">⌕</button><button class="icon-button notification" aria-label="通知">♢<i></i></button><span class="status-dot"></span><span class="offline">离线模式</span></div>
+      </header>
+
+      <div class="content">
+        <section class="welcome">
+          <div><p class="eyebrow">WELCOME BACK, LIN</p><h1>继续探索程序的内部世界。</h1><p>每次理解一条指令，都离真相更近一步。</p></div>
+          <div class="streak"><span>连续学习</span><strong>3 <small>天</small></strong><div class="week" aria-label="本周学习记录"><i class="done">一</i><i class="done">二</i><i class="done">三</i><i>四</i><i>五</i><i>六</i><i>日</i></div></div>
+        </section>
+
+        <section class="continue-card" id="lesson">
+          <div class="card-main">
+            <div class="section-heading"><span class="pulse"></span>继续学习 <em>预计 8 分钟</em></div>
+            <div class="lesson-number">LESSON 04</div>
+            <h2>加减运算与标志位</h2>
+            <p>观察 <code>add</code> 指令如何改变寄存器，并理解零标志位 <code>ZF</code> 的作用。</p>
+            <div class="lesson-meta"><span>模块 01 · CPU 与汇编基础</span><span>•</span><span>上次停在：预测题</span></div>
+            <button class="primary" id="continueBtn">继续学习 <span>→</span></button>
+          </div>
+          <div class="code-visual" aria-label="汇编代码预览">
+            <div class="window-bar"><i></i><i></i><i></i><span>assembly_preview.asm</span></div>
+            <pre><span class="line"><b>01</b> mov  rax, <em>05h</em></span>
+<span class="line active"><b>02</b> add  rax, <em>03h</em><u>← NEXT</u></span>
+<span class="line"><b>03</b> cmp  rax, <em>08h</em></span>
+<span class="line"><b>04</b> je   <strong>equal</strong></span></pre>
+            <div class="register"><span>RAX</span><strong>0000 0000 0000 0005</strong></div>
+            <div class="flags"><span>FLAGS</span><b>ZF <i>0</i></b><b>CF <i>0</i></b><b>SF <i>0</i></b></div>
+          </div>
+        </section>
+
+        <div class="grid">
+          <section class="panel progress-panel" id="progress">
+            <div class="panel-title"><div><span>总体进度</span><small>3 个学习模块</small></div><a href="#map">查看学习地图 →</a></div>
+            <div class="progress-overview"><div class="ring"><span><strong>27</strong><small>%</small></span></div><div><strong>3 / 11</strong><span>已完成课程</span><small>本周学习 42 分钟</small></div></div>
+            <div class="modules">
+              <div class="module-row"><div class="module-index complete">✓</div><div><strong>00 · 计算机基础</strong><div class="bar"><i style="width:100%"></i></div></div><span>3 / 3</span></div>
+              <div class="module-row"><div class="module-index current">01</div><div><strong>CPU 与汇编基础</strong><div class="bar"><i style="width:17%"></i></div></div><span>1 / 6</span></div>
+              <div class="module-row muted"><div class="module-index">02</div><div><strong>函数与调用</strong><div class="bar"><i></i></div></div><span>0 / 2</span></div>
+            </div>
+          </section>
+
+          <section class="panel weak-panel" id="mistakes">
+            <div class="panel-title"><div><span>需要巩固</span><small>根据最近练习生成</small></div><button aria-label="更多">•••</button></div>
+            <div class="weak-item"><div class="weak-icon">ZF</div><div><strong>标志位判断</strong><span>最近正确率 50%</span></div><span class="tag danger">需复习</span></div>
+            <div class="weak-item"><div class="weak-icon purple">0x</div><div><strong>十六进制换算</strong><span>最近正确率 75%</span></div><span class="tag">待巩固</span></div>
+            <button class="secondary">开始 5 分钟复习 <span>→</span></button>
+          </section>
+        </div>
+
+        <section class="daily">
+          <div><span class="daily-icon">⌁</span><div><strong>今日小挑战</strong><p>如果 <code>RAX = 0xFF</code>，执行 <code>add rax, 1</code> 后结果是多少？</p></div></div>
+          <button id="challengeBtn">接受挑战 <span>→</span></button>
+        </section>
+      </div>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status">课程已准备好，正在进入预测题…</div>
+  <script src="app.js"></script>
+</body>
+</html>
