@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="安全、离线、面向零基础学习者的逆向工程学习助手">
+  <title>RE:START · 逆向工程学习助手</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <button class="brand nav-link" data-view="home" aria-label="返回学习首页" data-help="返回学习首页">
+        <span class="brand-mark">R<span>E</span></span>
+        <span><strong>RE:START</strong><small>逆向工程学习助手</small></span>
+      </button>
+      <nav aria-label="主要导航">
+        <p class="nav-label">学习</p>
+        <button class="nav-item nav-link active" data-view="home" data-help="查看今日任务和继续学习"><span class="icon">⌂</span>学习首页</button>
+        <button class="nav-item nav-link" data-view="map" data-help="查看课程顺序与解锁状态"><span class="icon">◇</span>学习地图</button>
+        <button class="nav-item nav-link" data-view="courses" data-help="浏览三节完整课程"><span class="icon">▤</span>课程中心</button>
+        <p class="nav-label">回顾</p>
+        <button class="nav-item nav-link" data-view="mistakes" data-help="重新练习曾经答错的题目"><span class="icon">◎</span>错题本 <b class="badge" id="mistakeBadge">0</b></button>
+        <button class="nav-item nav-link" data-view="progress" data-help="查看完成度、正确率与学习记录"><span class="icon">▥</span>学习进度</button>
+        <button class="nav-item nav-link" data-view="terms" data-help="搜索逆向工程基础术语"><span class="icon">⌘</span>术语词典</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="safety"><span>✓</span><div><strong>安全实验模式</strong><small>仅运行项目内置教学示例</small></div></div>
+        <button class="nav-item nav-link" data-view="settings" data-help="管理本地记录与界面设置"><span class="icon">⚙</span>设置</button>
+        <div class="user"><div class="avatar">学</div><div><strong>本地学习者</strong><small>进度仅保存在此浏览器</small></div></div>
+      </div>
+    </aside>
+    <main>
+      <header class="topbar">
+        <button class="mobile-menu" id="menuBtn" data-help="展开或收起导航菜单" aria-label="展开或收起导航菜单">☰</button>
+        <div class="breadcrumb"><span id="pageName">学习首页</span><b>/</b><span id="pageDetail">概览</span></div>
+        <div class="top-actions"><span class="status-dot"></span><span class="offline">离线学习 · 自动保存</span></div>
+      </header>
+      <div class="content" id="app" tabindex="-1"></div>
+    </main>
+  </div>
+  <div class="modal-backdrop" id="modal" hidden></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="course-data.js"></script>
+  <script src="storage.js"></script>
+  <script src="simulator.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
