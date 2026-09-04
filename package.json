@@ -1,0 +1,7 @@
+{
+  "name": "restart-learning-assistant",
+  "private": true,
+  "scripts": {
+    "test": "node tests/learning.test.js"
+  }
+}
